@@ -4,34 +4,27 @@ import java.util.Scanner;
 
 public class Ex06_WorldSwimmingRecord {
     public static void main(String[] args) {
+        /*
+        T is in seconds
+        S is in meters
+        V is in meters per second
+         */
         Scanner sc = new Scanner(System.in);
         double worldRecordT = Double.parseDouble(sc.nextLine());
         double worldRecordS = Double.parseDouble(sc.nextLine());
-        double worldRecordV = worldRecordS / worldRecordT;
+        double wordRecordV = worldRecordS / worldRecordT;
 
-        double personV = Double.parseDouble(sc.nextLine());
+        double personTimeFor1Meter = Double.parseDouble(sc.nextLine());
+        double personV = 1.0 / personTimeFor1Meter;
 
-        double resistanceV = Math.floor(15.0 / 12.5);
-        personV = personV - resistanceV;
         double personT = worldRecordS / personV;
+        double delayT = Math.floor(worldRecordS / 15.0) * 12.5;
 
-        if (personT < worldRecordT) {
-            System.out.printf("Yes, he succeeded! The new world record is {времето на Иван seconds.");
+
+        if (personT + delayT < worldRecordT) {
+            System.out.printf("Yes, he succeeded! The new world record is %.2f seconds.", personT + delayT);
         } else {
-            System.out.printf("No, he failed! He was {недостигащите секунди} seconds slower.");
+            System.out.printf("No, he failed! He was %.2f seconds slower.", personT + delayT - worldRecordT);
         }
-
-
-        /*
-        double personV = 1.0 / personSecondsForMeter;
-        double worldRecordV = worldRecordMeters / worldRecordSeconds;
-        double resistanceV = Math.floor(15.0 / 12.5);
-        personV = personV - resistanceV;
-        if (personV < worldRecordV) {
-            System.out.printf("Yes, he succeeded! The new world record is {времето на Иван seconds.");
-        } else {
-            System.out.printf("No, he failed! He was {недостигащите секунди} seconds slower.");
-        }
-         */
     }
 }
